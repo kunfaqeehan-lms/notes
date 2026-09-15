@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notes Archive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #F7F5F0;
+    --paper-alt: #EFEBE1;
+    --ink: #1E2A27;
+    --ink-soft: #5B6259;
+    --pine: #2F4B3C;
+    --oxblood: #A13D3D;
+    --line: #D9D4C8;
+  }
+
+  * { box-sizing: border-box; }
+
+  body{
+    margin:0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.5;
+  }
+
+  .page{
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 56px 24px 80px;
+  }
+
+  header.title-block{
+    border-bottom: 2px solid var(--pine);
+    padding-bottom: 20px;
+    margin-bottom: 28px;
+  }
+
+  header.title-block .kicker{
+    font-size: 13px;
+    color: var(--ink-soft);
+    letter-spacing: 0.02em;
+    margin-bottom: 6px;
+  }
+
+  h1{
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 700;
+    font-size: clamp(28px, 4vw, 38px);
+    margin: 0 0 8px;
+  }
+
+  header.title-block p{
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 15px;
+    max-width: 60ch;
+  }
+
+  .toolbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+  }
+
+  #search{
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    padding: 10px 14px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: #fff;
+    color: var(--ink);
+    width: 260px;
+    max-width: 100%;
+  }
+
+  #search:focus{
+    outline: 2px solid var(--pine);
+    outline-offset: 1px;
+  }
+
+  .count{
+    font-size: 13px;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+
+  table{
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border: 1px solid var(--line);
+  }
+
+  thead th{
+    text-align: left;
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--pine);
+    padding: 12px 16px;
+    border-bottom: 2px solid var(--pine);
+  }
+
+  tbody tr{
+    border-bottom: 1px solid var(--line);
+  }
+
+  tbody tr:nth-child(even){
+    background: var(--paper-alt);
+  }
+
+  tbody tr:last-child{
+    border-bottom: none;
+  }
+
+  tbody tr:hover{
+    background: #EFE3DC;
+  }
+
+  td{
+    padding: 14px 16px;
+    font-size: 14.5px;
+    vertical-align: middle;
+  }
+
+  td.subject{
+    font-weight: 600;
+  }
+
+  td.teacher{
+    color: var(--ink-soft);
+  }
+
+  a.watch{
+    color: var(--pine);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid transparent;
+  }
+
+  a.watch:hover, a.watch:focus{
+    border-bottom-color: var(--pine);
+  }
+
+  a.stamp{
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--oxblood);
+    border: 1.5px solid var(--oxblood);
+    border-radius: 999px;
+    padding: 6px 16px;
+    text-decoration: none;
+    transform: rotate(-2deg);
+    transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
+  }
+
+  a.stamp:hover, a.stamp:focus{
+    transform: rotate(0deg);
+    background: var(--oxblood);
+    color: #fff;
+    outline: none;
+  }
+
+  .none{
+    color: var(--ink-soft);
+    font-size: 13px;
+    font-style: italic;
+  }
+
+  footer{
+    margin-top: 28px;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 640px){
+    thead{ display: none; }
+    table, tbody, tr, td{ display: block; width: 100%; }
+    tbody tr{
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      margin-bottom: 12px;
+      padding: 4px 0;
+    }
+    td{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px dashed var(--line);
+    }
+    td:last-child{ border-bottom: none; }
+    td::before{
+      content: attr(data-label);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ink-soft);
+      flex-shrink: 0;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="title-block">
+    <div class="kicker">Semester notes index</div>
+    <h1>Notes Archive</h1>
+    <p>Lecture recordings and printable notes for every subject, in one place.</p>
+  </header>
+
+  <div class="toolbar">
+    <input type="text" id="search" placeholder="Search subject or teacher…" aria-label="Search subject or teacher">
+    <span class="count" id="count"></span>
+  </div>
+
+  <table id="notes-table">
+    <thead>
+      <tr>
+        <th>Subject</th>
+        <th>Teacher</th>
+        <th>Lectures</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="subject" data-label="Subject">Al-Qira Wal Kitaaba(Book)</td>
+        <td class="teacher" data-label="Teacher">Shaikh Akbar Shams Madani</td>
+        <td data-label="Lecture"><a class="watch" href="https://youtube.com/playlist?list=PLEN196nOejOhMN93hTWPLq83BVChN4dFy&si=bB_MSRlrdThQbKNW" target="_blank" rel="noopener">Watch on YouTube</a></td>
+        <td data-label="Notes"><a class="stamp" href="notes/Al-Qira Wal Kitaaba(Book).pdf" download>Download</a></td>
+      </tr>
+      <tr>
+        <td class="subject" data-label="Subject">Al-Qira Wal Kitaaba(Mojam)</td>
+        <td class="teacher" data-label="Teacher">Shaikh Akbar Shams Madani</td>
+        <td data-label="Lecture"><a class="watch" href="https://youtube.com/playlist?list=PLEN196nOejOhMN93hTWPLq83BVChN4dFy&si=bB_MSRlrdThQbKNW" target="_blank" rel="noopener">Watch on YouTube</a></td>
+        <td data-label="Notes"><a class="stamp" href="notes/Al-Qira Wal Kitaaba(Mojam).pdf" download>Download</a></td>
+      </tr>
+      <tr>
+        <td class="subject" data-label="Subject">Nahw And Sarf</td>
+        <td class="teacher" data-label="Teacher">Shaikh Zabihullah Sanabili</td>
+        <td data-label="Lecture"><a class="watch" href="https://youtube.com/playlist?list=PLEN196nOejOgKoOmUADASpZNmdWJzr57l&si=hugPXJw7kurx__B3" target="_blank" rel="noopener">Watch on YouTube</a></td>
+        <td data-label="Notes"><a class="stamp" href="notes/Nahw And Sarf.pdf" download>Download</a></td>
+      </tr>
+      <tr>
+        <td class="subject" data-label="Subject">Sharh Umdatul Ahkaam</td>
+        <td class="teacher" data-label="Teacher">Shaikh Abdul Qayyum Azhari</td>
+        <td data-label="Lecture"><a class="watch" href="https://youtube.com/playlist?list=PLEN196nOejOjE_pNVAy-BYvo-xRAxC6Sg&si=EzPFQKhuS-qaz9t2" target="_blank" rel="noopener">Watch on YouTube</a></td>
+        <td data-label="Notes"><a class="stamp" href="notes/Sharh Umdatul Ahkaam.pdf" download>Download</a></td>
+        <!--<td data-label="Notes"><span class="none">Coming soon</span></td>-->
+      </tr>
+      <tr>
+        <td class="subject" data-label="Subject">Tabeer</td>
+        <td class="teacher" data-label="Teacher">Shaikh Farhan Madani</td>
+        <td data-label="Lecture"><a class="watch" href="https://youtube.com/playlist?list=PLEN196nOejOjXfRKxtO3DjJZBDX-q0rJX&si=MA3xDi0po7queCed" target="_blank" rel="noopener">Watch on YouTube</a></td>
+        <td data-label="Notes"><a class="stamp" href="notes/Tabeer.pdf" download>Download</a></td>
+      </tr>
+      <tr>
+        <td class="subject" data-label="Subject">Tajalliyat-e-Nabuwwat</td>
+        <td class="teacher" data-label="Teacher">Shaikh Siddiq Ahmed Salafi</td>
+        <td data-label="Lecture"><a class="watch" href="https://youtube.com/playlist?list=PLEN196nOejOg9iQ8Rwu-UaLa10ckCiVXj&si=Pfa0sddCDGedR5-e" target="_blank" rel="noopener">Watch on YouTube</a></td>
+        <td data-label="Notes"><a class="stamp" href="notes/Tajalliyat-e-Nabuwwat.pdf" download>Download</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <footer>Updated manually — edit the rows in index.html to add or change subjects.</footer>
+
+</div>
+
+<script>
+  const search = document.getElementById('search');
+  const rows = Array.from(document.querySelectorAll('#notes-table tbody tr'));
+  const count = document.getElementById('count');
+
+  function updateCount(n){
+    count.textContent = n + (n === 1 ? ' subject' : ' subjects');
+  }
+  updateCount(rows.length);
+
+  search.addEventListener('input', () => {
+    const q = search.value.trim().toLowerCase();
+    let visible = 0;
+    rows.forEach(row => {
+      const subject = row.querySelector('.subject').textContent.toLowerCase();
+      const teacher = row.querySelector('.teacher').textContent.toLowerCase();
+      const match = subject.includes(q) || teacher.includes(q);
+      row.style.display = match ? '' : 'none';
+      if(match) visible++;
+    });
+    updateCount(visible);
+  });
+</script>
+
+</body>
+</html>
