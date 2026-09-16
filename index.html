@@ -29,7 +29,7 @@
   }
 
   .page{
-    max-width: 880px;
+    max-width: 960px;
     margin: 0 auto;
     padding: 56px 24px 80px;
   }
@@ -162,6 +162,7 @@
     text-decoration: none;
     transform: rotate(-2deg);
     transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
+    white-space: nowrap;
   }
 
   a.stamp:hover, a.stamp:focus{
@@ -169,6 +170,16 @@
     background: var(--oxblood);
     color: #fff;
     outline: none;
+  }
+
+  a.stamp.book{
+    color: var(--pine);
+    border-color: var(--pine);
+  }
+
+  a.stamp.book:hover, a.stamp.book:focus{
+    background: var(--pine);
+    color: #fff;
   }
 
   .none{
@@ -216,7 +227,7 @@
   <header class="title-block">
     <div class="kicker">Semester notes index</div>
     <h1>Notes Archive</h1>
-    <p>Lecture recordings and printable notes for every subject, in one place.</p>
+    <p>Lecture recordings, source books, and printable notes for every subject, in one place.</p>
   </header>
 
   <div class="toolbar">
@@ -230,6 +241,7 @@
         <th>Subject</th>
         <th>Teacher</th>
         <th>Lectures</th>
+        <th>Book</th>
         <th>Notes</th>
       </tr>
     </thead>
@@ -238,24 +250,28 @@
         <td class="subject" data-label="Subject">Al-Qira Wal Kitaaba(Book)</td>
         <td class="teacher" data-label="Teacher">Shaikh Akbar Shams Madani</td>
         <td data-label="Lecture"><a class="watch" href="https://youtube.com/playlist?list=PLEN196nOejOhMN93hTWPLq83BVChN4dFy&si=bB_MSRlrdThQbKNW" target="_blank" rel="noopener">Watch on YouTube</a></td>
+        <td data-label="Book"><a class="stamp book" href="books/Al-Qira Wal Kitaaba(Book).pdf" download>Download</a></td>
         <td data-label="Notes"><a class="stamp" href="notes/Al-Qira Wal Kitaaba(Book).pdf" download>Download</a></td>
       </tr>
       <tr>
         <td class="subject" data-label="Subject">Al-Qira Wal Kitaaba(Mojam)</td>
         <td class="teacher" data-label="Teacher">Shaikh Akbar Shams Madani</td>
         <td data-label="Lecture"><a class="watch" href="https://youtube.com/playlist?list=PLEN196nOejOhMN93hTWPLq83BVChN4dFy&si=bB_MSRlrdThQbKNW" target="_blank" rel="noopener">Watch on YouTube</a></td>
+        <td data-label="Book"><a class="stamp book" href="books/Al-Qira Wal Kitaaba(Mojam).pdf" download>Download</a></td>
         <td data-label="Notes"><a class="stamp" href="notes/Al-Qira Wal Kitaaba(Mojam).pdf" download>Download</a></td>
       </tr>
       <tr>
         <td class="subject" data-label="Subject">Nahw And Sarf</td>
         <td class="teacher" data-label="Teacher">Shaikh Zabihullah Sanabili</td>
         <td data-label="Lecture"><a class="watch" href="https://youtube.com/playlist?list=PLEN196nOejOgKoOmUADASpZNmdWJzr57l&si=hugPXJw7kurx__B3" target="_blank" rel="noopener">Watch on YouTube</a></td>
+        <td data-label="Book"><a class="stamp book" href="books/Nahw And Sarf.pdf" download>Download</a></td>
         <td data-label="Notes"><a class="stamp" href="notes/Nahw And Sarf.pdf" download>Download</a></td>
       </tr>
       <tr>
         <td class="subject" data-label="Subject">Sharh Umdatul Ahkaam</td>
         <td class="teacher" data-label="Teacher">Shaikh Abdul Qayyum Azhari</td>
         <td data-label="Lecture"><a class="watch" href="https://youtube.com/playlist?list=PLEN196nOejOjE_pNVAy-BYvo-xRAxC6Sg&si=EzPFQKhuS-qaz9t2" target="_blank" rel="noopener">Watch on YouTube</a></td>
+        <td data-label="Book"><a class="stamp book" href="books/Sharh Umdatul Ahkaam.pdf" download>Download</a></td>
         <td data-label="Notes"><a class="stamp" href="notes/Sharh Umdatul Ahkaam.pdf" download>Download</a></td>
         <!--<td data-label="Notes"><span class="none">Coming soon</span></td>-->
       </tr>
@@ -263,12 +279,14 @@
         <td class="subject" data-label="Subject">Tabeer</td>
         <td class="teacher" data-label="Teacher">Shaikh Farhan Madani</td>
         <td data-label="Lecture"><a class="watch" href="https://youtube.com/playlist?list=PLEN196nOejOjXfRKxtO3DjJZBDX-q0rJX&si=MA3xDi0po7queCed" target="_blank" rel="noopener">Watch on YouTube</a></td>
+        <td data-label="Book"><a class="stamp book" href="books/Tabeer.pdf" download>Download</a></td>
         <td data-label="Notes"><a class="stamp" href="notes/Tabeer.pdf" download>Download</a></td>
       </tr>
       <tr>
         <td class="subject" data-label="Subject">Tajalliyat-e-Nabuwwat</td>
         <td class="teacher" data-label="Teacher">Shaikh Siddiq Ahmed Salafi</td>
         <td data-label="Lecture"><a class="watch" href="https://youtube.com/playlist?list=PLEN196nOejOg9iQ8Rwu-UaLa10ckCiVXj&si=Pfa0sddCDGedR5-e" target="_blank" rel="noopener">Watch on YouTube</a></td>
+        <td data-label="Book"><a class="stamp book" href="books/Tajalliyat-e-Nabuwwat.pdf" download>Download</a></td>
         <td data-label="Notes"><a class="stamp" href="notes/Tajalliyat-e-Nabuwwat.pdf" download>Download</a></td>
       </tr>
     </tbody>
